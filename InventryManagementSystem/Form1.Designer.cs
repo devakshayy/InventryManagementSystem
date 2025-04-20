@@ -56,7 +56,7 @@
             ItemGrid.Location = new Point(430, 69);
             ItemGrid.Name = "ItemGrid";
             ItemGrid.RowHeadersWidth = 62;
-            ItemGrid.Size = new Size(1005, 310);
+            ItemGrid.Size = new Size(1114, 310);
             ItemGrid.TabIndex = 0;
             ItemGrid.CellContentClick += ItemGrid_CellContentClick;
             // 
@@ -76,11 +76,11 @@
             // PriceBtn
             // 
             PriceBtn.BackColor = Color.SeaGreen;
-            PriceBtn.Font = new Font("Nirmala UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            PriceBtn.Font = new Font("Nirmala UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PriceBtn.ForeColor = Color.White;
-            PriceBtn.Location = new Point(809, 417);
+            PriceBtn.Location = new Point(813, 417);
             PriceBtn.Name = "PriceBtn";
-            PriceBtn.Size = new Size(251, 50);
+            PriceBtn.Size = new Size(345, 50);
             PriceBtn.TabIndex = 5;
             PriceBtn.Text = "CHANGE PRICE";
             PriceBtn.UseVisualStyleBackColor = false;
@@ -126,6 +126,7 @@
             // PriceNum
             // 
             PriceNum.Location = new Point(27, 139);
+            PriceNum.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             PriceNum.Name = "PriceNum";
             PriceNum.Size = new Size(287, 31);
             PriceNum.TabIndex = 5;
@@ -171,12 +172,12 @@
             // 
             // QtyBtn
             // 
-            QtyBtn.BackColor = Color.IndianRed;
-            QtyBtn.Font = new Font("Nirmala UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            QtyBtn.BackColor = Color.Goldenrod;
+            QtyBtn.Font = new Font("Nirmala UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             QtyBtn.ForeColor = Color.White;
             QtyBtn.Location = new Point(430, 417);
             QtyBtn.Name = "QtyBtn";
-            QtyBtn.Size = new Size(285, 50);
+            QtyBtn.Size = new Size(345, 50);
             QtyBtn.TabIndex = 10;
             QtyBtn.Text = "CHANGE QTY";
             QtyBtn.UseVisualStyleBackColor = false;
@@ -184,21 +185,22 @@
             // 
             // ProfitBtn
             // 
-            ProfitBtn.BackColor = Color.SeaGreen;
-            ProfitBtn.Font = new Font("Nirmala UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ProfitBtn.BackColor = Color.OrangeRed;
+            ProfitBtn.Font = new Font("Nirmala UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ProfitBtn.ForeColor = Color.White;
-            ProfitBtn.Location = new Point(1169, 417);
+            ProfitBtn.Location = new Point(1199, 417);
             ProfitBtn.Name = "ProfitBtn";
-            ProfitBtn.Size = new Size(266, 50);
+            ProfitBtn.Size = new Size(345, 50);
             ProfitBtn.TabIndex = 11;
             ProfitBtn.Text = "CHANGE PROFIT";
             ProfitBtn.UseVisualStyleBackColor = false;
+            ProfitBtn.Click += ProfitBtn_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1470, 492);
+            ClientSize = new Size(1579, 584);
             Controls.Add(ProfitBtn);
             Controls.Add(QtyBtn);
             Controls.Add(ProfitUnit);

@@ -53,5 +53,16 @@ namespace InventryManagementSystem
 
             return "Quantity Updated Successfully";
         }
+        public string ChangeProfit(decimal profit)
+        {
+            if (profit <= 0)
+                return "Not a Valid Profit";
+
+            ProfitUnit = profit;
+            CalculatePrices();
+
+            return "Profit Updated Successfully";
+
+        }
     }
 }

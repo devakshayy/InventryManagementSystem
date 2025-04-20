@@ -70,5 +70,19 @@ namespace InventryManagementSystem
         {
 
         }
+
+        private void ProfitBtn_Click(object sender, EventArgs e)
+        {
+            if (ItemGrid.SelectedRows.Count == 1 && ProfitUnit.Value > 0)
+            {
+                Item SelectedItem = ItemGrid.SelectedRows[0].DataBoundItem as Item;
+                string message = SelectedItem.ChangeProfit(ProfitUnit.Value);
+
+                RefreshGrid();
+                ClearField();
+
+                MessageBox.Show(message);
+            }
+        }
     }
 }
