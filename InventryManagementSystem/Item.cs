@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,26 +11,46 @@ namespace InventryManagementSystem
     {
         public string ItemName { get; set; }
         public decimal ItemQty { get; set; }
-        public decimal Price { get; set; }
+        public decimal BuyPrice { get; set; }
+        public decimal SellingPrincePerUniit { get; set; }
+        public decimal ProfitUnit { get; set; }
+        public decimal TotalBuyPrice { get; set; }
+        public decimal TotalSellingPrice { get; set; }
 
-        public Item(string ItemName,decimal ItemQty,decimal Price)
+        public Item(string ItemName, decimal ItemQty, decimal BuyPrice, decimal ProfitUnit)
         {
             this.ItemName = ItemName;
             this.ItemQty = ItemQty;
-            this.Price = Price;
+            this.BuyPrice = BuyPrice;
+            this.ProfitUnit = ProfitUnit;
+
+            CalculatePrices();
         }
-        public string ChangePrice(decimal price)
+        private void CalculatePrices()
         {
-            if (price <= 0)
+            TotalBuyPrice = ItemQty * BuyPrice;
+            SellingPrincePerUniit = BuyPrice + ProfitUnit;
+            TotalSellingPrice = SellingPrincePerUniit * ItemQty;
+        }
+
+        public string ChangePrice(decimal Buyprice)
+        {
+            if (Buyprice <= 0)
                 return "Please Enter Valid Amount";
-            Price = price;
+
+            BuyPrice = Buyprice;
+            CalculatePrices();
+
             return "Price Updated Successfully";
         }
         public string ChangeQty(decimal qty)
         {
             if (qty <= 0)
                 return "Not a Valid Quantity";
+
             ItemQty = qty;
+            CalculatePrices();
+
             return "Quantity Updated Successfully";
         }
     }

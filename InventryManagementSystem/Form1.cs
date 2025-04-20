@@ -10,7 +10,9 @@ namespace InventryManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Item item = new Item(ItemName.Text, QtyNum.Value, PriceNum.Value);
+            //if(string.IsNullOrEmpty(ItemName.Text))
+            Item item = new Item(ItemName.Text, QtyNum.Value, PriceNum.Value, ProfitUnit.Value);
+            Console.WriteLine(item);
             items.Add(item);
             RefreshGrid();
             ClearField();
@@ -25,6 +27,7 @@ namespace InventryManagementSystem
             ItemName.Text = string.Empty;
             QtyNum.Value = 0;
             PriceNum.Value = 0;
+            ProfitUnit.Value = 0;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -60,6 +63,11 @@ namespace InventryManagementSystem
 
                 MessageBox.Show(message);
             }
+
+        }
+
+        private void ItemGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

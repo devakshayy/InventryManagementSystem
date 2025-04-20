@@ -39,31 +39,33 @@
             groupBox1 = new GroupBox();
             QtyNum = new NumericUpDown();
             label4 = new Label();
-            QltyNum = new NumericUpDown();
+            ProfitUnit = new NumericUpDown();
             QtyBtn = new Button();
+            ProfitBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)ItemGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PriceNum).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)QtyNum).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)QltyNum).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ProfitUnit).BeginInit();
             SuspendLayout();
             // 
             // ItemGrid
             // 
             ItemGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ItemGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ItemGrid.Location = new Point(438, 40);
+            ItemGrid.Location = new Point(430, 69);
             ItemGrid.Name = "ItemGrid";
             ItemGrid.RowHeadersWidth = 62;
-            ItemGrid.Size = new Size(300, 249);
+            ItemGrid.Size = new Size(1005, 310);
             ItemGrid.TabIndex = 0;
+            ItemGrid.CellContentClick += ItemGrid_CellContentClick;
             // 
             // AddBtn
             // 
             AddBtn.BackColor = Color.DodgerBlue;
             AddBtn.Font = new Font("Nirmala UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddBtn.ForeColor = SystemColors.ButtonHighlight;
-            AddBtn.Location = new Point(43, 388);
+            AddBtn.Location = new Point(35, 417);
             AddBtn.Name = "AddBtn";
             AddBtn.Size = new Size(345, 50);
             AddBtn.TabIndex = 4;
@@ -76,9 +78,9 @@
             PriceBtn.BackColor = Color.SeaGreen;
             PriceBtn.Font = new Font("Nirmala UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PriceBtn.ForeColor = Color.White;
-            PriceBtn.Location = new Point(438, 316);
+            PriceBtn.Location = new Point(809, 417);
             PriceBtn.Name = "PriceBtn";
-            PriceBtn.Size = new Size(300, 50);
+            PriceBtn.Size = new Size(251, 50);
             PriceBtn.TabIndex = 5;
             PriceBtn.Text = "CHANGE PRICE";
             PriceBtn.UseVisualStyleBackColor = false;
@@ -136,7 +138,7 @@
             groupBox1.Controls.Add(PriceNum);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(43, 30);
+            groupBox1.Location = new Point(35, 64);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(345, 259);
             groupBox1.TabIndex = 7;
@@ -154,39 +156,52 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Tahoma", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(43, 337);
+            label4.Location = new Point(35, 355);
             label4.Name = "label4";
-            label4.Size = new Size(86, 24);
+            label4.Size = new Size(114, 24);
             label4.TabIndex = 8;
-            label4.Text = "Quality :";
+            label4.Text = "Profit/Unit :";
             // 
-            // QltyNum
+            // ProfitUnit
             // 
-            QltyNum.Location = new Point(139, 335);
-            QltyNum.Name = "QltyNum";
-            QltyNum.Size = new Size(249, 31);
-            QltyNum.TabIndex = 9;
+            ProfitUnit.Location = new Point(145, 353);
+            ProfitUnit.Name = "ProfitUnit";
+            ProfitUnit.Size = new Size(235, 31);
+            ProfitUnit.TabIndex = 9;
             // 
             // QtyBtn
             // 
             QtyBtn.BackColor = Color.IndianRed;
             QtyBtn.Font = new Font("Nirmala UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             QtyBtn.ForeColor = Color.White;
-            QtyBtn.Location = new Point(438, 388);
+            QtyBtn.Location = new Point(430, 417);
             QtyBtn.Name = "QtyBtn";
-            QtyBtn.Size = new Size(300, 50);
+            QtyBtn.Size = new Size(285, 50);
             QtyBtn.TabIndex = 10;
             QtyBtn.Text = "CHANGE QTY";
             QtyBtn.UseVisualStyleBackColor = false;
             QtyBtn.Click += QtyBtn_Click;
             // 
+            // ProfitBtn
+            // 
+            ProfitBtn.BackColor = Color.SeaGreen;
+            ProfitBtn.Font = new Font("Nirmala UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ProfitBtn.ForeColor = Color.White;
+            ProfitBtn.Location = new Point(1169, 417);
+            ProfitBtn.Name = "ProfitBtn";
+            ProfitBtn.Size = new Size(266, 50);
+            ProfitBtn.TabIndex = 11;
+            ProfitBtn.Text = "CHANGE PROFIT";
+            ProfitBtn.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1470, 492);
+            Controls.Add(ProfitBtn);
             Controls.Add(QtyBtn);
-            Controls.Add(QltyNum);
+            Controls.Add(ProfitUnit);
             Controls.Add(label4);
             Controls.Add(groupBox1);
             Controls.Add(PriceBtn);
@@ -200,7 +215,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)QtyNum).EndInit();
-            ((System.ComponentModel.ISupportInitialize)QltyNum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ProfitUnit).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -218,10 +233,11 @@
         private GroupBox groupBox1;
         private NumericUpDown QtyNum;
         private Label label4;
-        private NumericUpDown QltyNum;
+        private NumericUpDown ProfitUnit;
         private Button RemBtn;
         private Button ChangeBtn;
         private Button QtyBtn;
         private Button PriceBtn;
+        private Button ProfitBtn;
     }
 }
