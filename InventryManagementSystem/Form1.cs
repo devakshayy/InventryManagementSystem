@@ -2,7 +2,7 @@ namespace InventryManagementSystem
 {
     public partial class Form1 : Form
     {
-        string filePath = "inventry.txt";
+        string filePath = "inventory.txt";
 
         List<Item> items = new List<Item>();
         public Form1()
