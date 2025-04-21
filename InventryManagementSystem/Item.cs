@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace InventryManagementSystem
 {
@@ -26,6 +27,7 @@ namespace InventryManagementSystem
 
             CalculatePrices();
         }
+
         private void CalculatePrices()
         {
             TotalBuyPrice = ItemQty * BuyPrice;
@@ -63,6 +65,21 @@ namespace InventryManagementSystem
 
             return "Profit Updated Successfully";
 
+        }
+        public override string ToString()
+        {
+            return $"{ItemName}|{ItemQty}|{BuyPrice}|{ProfitUnit}";
+        }
+        public static Item FromString(string line)
+        {
+            var parts = line.Split('|');
+
+            return new Item(
+                  parts[0],
+                  decimal.Parse(parts[1]),
+                  decimal.Parse(parts[2]),
+                  decimal.Parse(parts[3])
+                  );
         }
     }
 }

@@ -2,20 +2,28 @@ namespace InventryManagementSystem
 {
     public partial class Form1 : Form
     {
+        string filePath = "inventry.txt";
+
         List<Item> items = new List<Item>();
         public Form1()
         {
             InitializeComponent();
         }
-
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadItemsFromFile();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            //if(string.IsNullOrEmpty(ItemName.Text))
+            if (string.IsNullOrEmpty(ItemName.Text) || QtyNum.Value <= 0 || PriceNum.Value <= 0)
+                return;
+
             Item item = new Item(ItemName.Text, QtyNum.Value, PriceNum.Value, ProfitUnit.Value);
             Console.WriteLine(item);
             items.Add(item);
             RefreshGrid();
             ClearField();
+            SaveItemsToFile();
         }
         private void RefreshGrid()
         {
@@ -39,18 +47,13 @@ namespace InventryManagementSystem
 
                 RefreshGrid();
                 ClearField();
+                SaveItemsToFile();
 
                 MessageBox.Show(message);
             }
 
 
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void QtyBtn_Click(object sender, EventArgs e)
         {
             if (ItemGrid.SelectedRows.Count == 1 && QtyNum.Value > 0)
@@ -60,6 +63,7 @@ namespace InventryManagementSystem
 
                 RefreshGrid();
                 ClearField();
+                SaveItemsToFile();
 
                 MessageBox.Show(message);
             }
@@ -80,8 +84,34 @@ namespace InventryManagementSystem
 
                 RefreshGrid();
                 ClearField();
+                SaveItemsToFile();
 
                 MessageBox.Show(message);
+            }
+        }
+        private void LoadItemsFromFile()
+        {
+            if (File.Exists(filePath))
+            {
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        items.Add(Item.FromString(line));
+                    }
+                }
+            }
+            RefreshGrid();
+        }
+        private void SaveItemsToFile()
+        {
+            using(StreamWriter writer = new StreamWriter(filePath, false))
+            {
+                foreach(Item item in items)
+                {
+                    writer.WriteLine(item.ToString());
+                }
             }
         }
     }
